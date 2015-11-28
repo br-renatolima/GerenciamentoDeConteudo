@@ -1,6 +1,5 @@
 package controle;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -67,16 +66,15 @@ public class PostMB {
 
 	
 	public void setPosts(List<Post> posts) {
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Calendar c = Calendar.getInstance();
 		
 		for (Post post : posts) {
 			c.setTime(post.getData());
-			post.setDia(c.get(c.DAY_OF_MONTH));
-			post.setMes(c.get(c.MONTH));
-			post.setAno(c.get(c.YEAR));
-			post.setHora(c.get(c.HOUR_OF_DAY));
-			post.setMinuto(c.get(c.MINUTE));
+			post.setDia(c.get(Calendar.DAY_OF_MONTH));
+			post.setMes(c.get(Calendar.MONTH));
+			post.setAno(c.get(Calendar.YEAR));
+			post.setHora(c.get(Calendar.HOUR_OF_DAY));
+			post.setMinuto(c.get(Calendar.MINUTE));
 			
 			switch (post.getMes()) {
 			case 1: post.setMesExtenso("Janeiro"); break;
@@ -108,7 +106,7 @@ public class PostMB {
 		
 	}
 	
-	public void salvar(){
+	public String salvar(){
 		SimpleDateFormat data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String data1 = data.format(new Date());
 		Date datafinal;
@@ -119,20 +117,24 @@ public class PostMB {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
-	public void aprovar() {
+	public String aprovar() {
 		post.setStatus("OK");
 		dao.atualizar(post);
+		return null;
 	}
 	
-	public void recusar() {
+	public String recusar() {
 		post.setStatus("CA");
 		dao.atualizar(post);
+		return null;
 	}
 	
-	public void excluir(){
+	public String excluir(){
 		dao.excluir(post);
+		return null;
 	}
 	
 	public PostDAO getDao() {

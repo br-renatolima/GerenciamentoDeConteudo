@@ -1,7 +1,9 @@
 package dao;
 
 import java.util.List;
+
 import modelo.Post;
+
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 
@@ -13,6 +15,7 @@ public class PostDAO {
 		this.session = HibernateUtil.getSession();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Post> listarTodos(){
 		return session.createCriteria(Post.class).addOrder(Order.desc("id")).list();
 	}

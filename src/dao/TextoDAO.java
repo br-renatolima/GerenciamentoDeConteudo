@@ -14,6 +14,7 @@ public class TextoDAO {
 		this.session = HibernateUtil.getSession();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Texto> ListarTodosTextos() {
 		return session.createCriteria(Texto.class).list();
 	}

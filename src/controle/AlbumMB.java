@@ -1,12 +1,13 @@
 package controle;
 
 
-import java.io.File;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
@@ -23,10 +24,9 @@ public class AlbumMB {
 	private AlbumDAO dao = new AlbumDAO();
 	private int id;
 	private String nome;
-	private String caminho;
 	private String descricao;
 	private Date data;
-	private Album album;
+	private Album album = new Album();
 
 	public AlbumMB() {
 		this.setAlbuns(dao.listarTodos());
@@ -57,27 +57,60 @@ public class AlbumMB {
 		return null;
 	}
 
-	public void salvar(){
-		Album a = new Album();
-		a.setCaminho("../img/fotos/" + this.getNome());
-		a.setNome(this.getNome());
-		a.setDescricao(getDescricao());
-		a.setData(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+	public String salvar(){
+		album.setNome(this.getNome());
+		album.setDescricao(getDescricao());
+		album.setData(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 		try {			
-			new File(a.getCaminho()).mkdirs();
-			dao.inserir(a);
+			dao.inserir(album);
+			System.out.println("Salvo com Sucesso!");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println("Salvo com Sucesso!");
+		FacesMessage msg = new FacesMessage("Sucesso! Gravação do album ", album.getNome() + " conluida!");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		return "";
 	}
 	
-	public void atualizar(){
-		dao.atualizar(album);
+	public String editar()throws SQLException{
+		try{
+			ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
+			String idParam = ctx.getRequestParameterMap().get("id");
+			this.album = this.getAlbumPorId(Integer.parseInt(idParam));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "editar.jsf";
 	}
 	
-	public void remover(){
-		dao.remover(album);
+	public String atualizar() throws SQLException{
+		try {
+			ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
+	        String idParam = ctx.getRequestParameterMap().get("id");
+	     	album.setId(Integer.valueOf(idParam));
+			dao.atualizar(album);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		FacesMessage msg = new FacesMessage("Sucesso! Alteração do album ", album.getNome() + " conluido!");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		return "";
+	}
+	
+	public String remover() throws SQLException{
+		try {
+			ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
+	        String idParam = ctx.getRequestParameterMap().get("id");
+	     	album.setId(Integer.valueOf(idParam));
+			dao.remover(album);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		FacesMessage msg = new FacesMessage("Sucesso! Remoção do album ", album.getNome() + " conluido!");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		
+		this.setAlbuns(dao.listarTodos());
+		return "lista.jsf";
 	}
 	
 	public List<Album> getAlbuns() {
@@ -110,14 +143,6 @@ public class AlbumMB {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getCaminho() {
-		return caminho;
-	}
-
-	public void setCaminho(String caminho) {
-		this.caminho = caminho;
 	}
 
 	public String getDescricao() {

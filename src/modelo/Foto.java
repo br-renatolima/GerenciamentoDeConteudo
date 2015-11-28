@@ -1,9 +1,7 @@
 package modelo;
 
-import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -17,16 +15,18 @@ public class Foto {
 	private int id;
 	private String nome;
 	private String caminho;
-	private Date data;
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Album album;
+	private String data;
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	private Album album = new Album();
+	private byte[] imagem;
 
-	public Foto(int id, String nome, String caminho, Date data, Album album) {
+	public Foto(int id, String nome, String caminho, String data, Album album, byte[] imagem) {
 		this.id = id;
 		this.nome = nome;
 		this.caminho = caminho;
 		this.data = data;
 		this.album = album;
+		this.imagem = imagem;
 	}
 
 
@@ -58,11 +58,11 @@ public class Foto {
 		this.caminho = caminho;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
@@ -72,6 +72,16 @@ public class Foto {
 
 	public void setAlbum(Album album_id) {
 		this.album = album_id;
+	}
+
+
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
 	}
 
 }

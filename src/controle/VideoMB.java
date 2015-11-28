@@ -68,17 +68,20 @@ public class VideoMB {
 		this.videos = list;
 	}
 	
-	public void salvar(){
+	public String salvar(){
 		Video video = new Video(this.getCodigo(), new Date(), this.getLove(), this.getNome());
 		dao.inserir(video);
+		return null;
 	}
 	
-	public void atualizar(){
+	public String atualizar(){
 		dao.atualizar(video);
+		return null;
 	}
 	
-	public void remover(){
+	public String remover(){
 		dao.remover(video);
+		return null;
 	}
 	
 	public void onrate(RateEvent rateEvent) throws UnknownHostException {

@@ -1,7 +1,9 @@
 package dao;
 
 import java.util.List;
+
 import modelo.Album;
+
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 
@@ -12,6 +14,7 @@ public class AlbumDAO {
 		this.session = HibernateUtil.getSession();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Album> listarTodos(){
 		return session.createCriteria(Album.class).addOrder(Order.desc("id")).list();
 	}
@@ -31,7 +34,7 @@ public class AlbumDAO {
 	public String atualizar(Album album) {
 		session.beginTransaction();
 		try {
-			session.update(album);
+			session.merge(album);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
@@ -43,6 +46,7 @@ public class AlbumDAO {
 	public String remover(Album album) {
 		session.beginTransaction();
 		try {
+			session.clear();
 			session.delete(album);
 			session.getTransaction().commit();
 		} catch (Exception e) {

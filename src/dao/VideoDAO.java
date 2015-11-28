@@ -14,6 +14,7 @@ public class VideoDAO {
 		this.session = HibernateUtil.getSession();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Video> listarTodos(){
 		return session.createCriteria(Video.class).addOrder(Order.desc("id")).list();
 	}

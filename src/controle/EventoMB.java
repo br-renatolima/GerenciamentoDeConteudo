@@ -6,13 +6,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
+
 import dao.EventoDAO;
 import modelo.Evento;
 
@@ -34,7 +37,7 @@ public class EventoMB {
 	private Evento evento;
 	
 	public EventoMB(){
-		this.setEventos(dao.ListarTodosEventos());
+		this.setEventos(dao.listarTodos());
 		this.setProximosEventos(this.getEventos());
 		this.setLocais(this.locais);
 		
@@ -64,13 +67,27 @@ public class EventoMB {
 		return null;
 	}
 
-	public void salvar() throws Exception{
-		Evento e = new Evento(this.getData(), this.getLocal(), this.getEndereco(), this.getObs(), this.getNome(), "AT");
-		this.dao.inserir(e);
+	public String salvar() throws Exception{
+		Boolean datanaodisponivel = false;
+		for (Evento evento : eventos) {
+			if (evento.getData().compareTo(this.getData()) == 0){
+				FacesContext facesContext = FacesContext.getCurrentInstance();
+				facesContext.addMessage(null, new FacesMessage("Já existe um evento com essa data e hora!"));
+				datanaodisponivel = true;
+			}
+		}
+		
+		if(!datanaodisponivel){
+			Object e = new Evento(this.getData(), this.getLocal(), this.getEndereco(), this.getObs(), this.getNome(), "AT");
+			this.dao.salvar(e);
+		}
+		
+		return null;
 	}
 	
-	public void atualizar() throws Exception{
-		this.dao.atualizarEvento(evento);
+	public String atualizar() throws Exception{
+		this.dao.atualizar(evento);
+		return null;
 	}
 	
 	
@@ -95,7 +112,7 @@ public class EventoMB {
         requestContext.execute("PF('dlg').show()");
     }
 	
-	// Método responsável por carregar a tela
+	
 	public void setEventos(List<Evento> eventos) {
 		Calendar calendario = Calendar.getInstance();
 		for (Evento evento : eventos) {

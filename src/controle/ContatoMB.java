@@ -2,6 +2,7 @@ package controle;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
@@ -16,33 +17,36 @@ public class ContatoMB {
 	public ContatoMB() {
 	}
 	
-	public void enviar() throws EmailException{
-			   SimpleEmail email = new SimpleEmail();
-			   //Utilize o hostname do seu provedor de email
-			   System.out.println("alterando hostname...");
-			   email.setHostName("br236.hostgator.com.br");
-			   //Quando a porta utilizada não é a padrão (gmail = 465)
-			   email.setSmtpPort(465);
-			   //Adicione os destinatários
-			   email.addTo("orbitacrista@gmail.com", "Órbita Cristã");
-			   //Configure o seu email do qual enviará
-			   //email.setFrom("seuemail@seuprovedor.com", "Seu nome");
-			   email.setFrom(mail, nome);
-			   //Adicione um assunto
-			   email.setSubject(assunto);
-			   //Adicione a mensagem do email
-			   email.setMsg(mensagem);
-			   //Para autenticar no servidor é necessário chamar os dois métodos abaixo
-			   System.out.println("autenticando...");
-			   email.setSSL(true);
-			   email.setAuthentication("orbitacrista@orbitacrista.com.br", "iloveyoumylord1");
-			   System.out.println("enviando...");
-			   try {
-				email.send();
-				System.out.println("Email enviado!");
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}			   		
+	@SuppressWarnings("deprecation")
+	public String enviar() throws EmailException{
+	   SimpleEmail email = new SimpleEmail();
+	   //Utilize o hostname do seu provedor de email
+	   System.out.println("alterando hostname...");
+	   email.setHostName("br236.hostgator.com.br");
+	   //Quando a porta utilizada não é a padrão (gmail = 465)
+	   email.setSmtpPort(465);
+	   //Adicione os destinatários
+	   email.addTo("orbitacrista@gmail.com", "Órbita Cristã");
+	   //Configure o seu email do qual enviará
+	   //email.setFrom("seuemail@seuprovedor.com", "Seu nome");
+	   email.setFrom(mail, nome);
+	   //Adicione um assunto
+	   email.setSubject(assunto);
+	   //Adicione a mensagem do email
+	   email.setMsg(mensagem);
+	   //Para autenticar no servidor é necessário chamar os dois métodos abaixo
+	   System.out.println("autenticando...");
+	   email.setSSL(true);
+	   email.setAuthentication("orbitacrista@orbitacrista.com.br", "^!s@s~G[&T)7");
+	   System.out.println("enviando...");
+	   
+	   try {
+		   email.send();
+		   System.out.println("Email enviado!");
+	   } catch (Exception e) {
+		   System.out.println(e.getMessage());
+	   }
+	   return null;
 	}
 
 	public String getMail() {

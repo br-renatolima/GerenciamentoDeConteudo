@@ -56,17 +56,20 @@ public class AdministradorMB {
 		return null;
 	}
 	
-	public void salvar(){
+	public String salvar(){
 		Administrador adm = new Administrador(this.getEmail(), this.getNome(), this.getSobrenome(), this.getLogin(), this.getSenha(), this.getTelefone());
 		dao.inserir(adm);
+		return null;
 	}
 	
-	public void atualizar(){
+	public String atualizar(){
 		dao.atualizar(administrador);
+		return null;
 	}
 	
-	public void remover(){
+	public String remover(){
 		dao.remover(administrador);
+		return null;
 	}
 
 	public List<Administrador> getAdministradores() {

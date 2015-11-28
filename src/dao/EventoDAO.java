@@ -1,11 +1,13 @@
 package dao;
 
 import java.util.List;
+
 import modelo.Evento;
+
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 
-public class EventoDAO {
+public class EventoDAO implements IDao{
 	
 	String retorno = "";
 	private Session session;
@@ -14,12 +16,14 @@ public class EventoDAO {
 		this.session =  HibernateUtil.getSession();
 	}
 	
-	public List<Evento> ListarTodosEventos(){
+	@SuppressWarnings("unchecked")
+	public List<Evento> listarTodos(){
 		return session.createCriteria(Evento.class).addOrder(Order.asc("data")).list();
 		}
 	
 	
-	public String inserir(Evento objEvento) throws Exception{
+	public String salvar(Object obj){
+		Evento objEvento = (Evento) obj;
 		session.beginTransaction();		
 		try{
 			
@@ -36,7 +40,8 @@ public class EventoDAO {
 	
 	}
 	
-	public String atualizarEvento (Evento objEvento) {
+	public String atualizar(Object obj) {
+		Evento objEvento = (Evento) obj;
 		session.beginTransaction();
 		try{
 			session.update(objEvento);
@@ -50,5 +55,10 @@ public class EventoDAO {
 		retorno = "Atualizado com sucesso!";
 		return retorno;
 	}
-	
+
+	@Override
+	public String remover(Object obj) {
+		return null;
+	}
+
 }

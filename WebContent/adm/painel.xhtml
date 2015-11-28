@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -47,118 +47,44 @@
         
 <h:body>
 
-	<div class="responsive-navigation visible-sm visible-xs">
-
-		<div class="responsive_menu">
-			<ul class="main_menu">
-				<li><a onclick="PF('modalAdministrador').show();" class="show-1" id="itemresponsivo" href="#"><i class="fa fa-users"></i> Administrador</a></li>
-				<li><a onclick="PF('modalMusica').show();" class="show-2" id="itemresponsivo" href="#"><i class="fa fa-music"></i>M&uacute;sica</a></li>
-				<li><a onclick="PF('modalAlbum').show();" class="show-3" id="itemresponsivo" href="#"><i class="fa fa-book"></i> Album</a></li>
-				<li><a onclick="PF('modalFoto').show();" class="show-4" id="itemresponsivo" href="#"><i class="fa fa-photo"></i> Foto</a></li>
-				<li><a onclick="PF('modalVideo').show();" class="show-5" id="itemresponsivo" href="#"><i class="fa fa-youtube-play"></i>V&iacute;deo</a></li>
-				<li><a onclick="PF('modalEvento').show();" class="show-6" id="itemresponsivo" href="#"><i class="fa fa-flag-checkered"></i>Evento</a></li>
-				<li><a onclick="PF('modalTexto').show();" class="show-7" id="itemresponsivo" href="#"><i class="fa fa-file-text-o"></i>Texto</a></li>
-				<li><a onclick="PF('modalPost').show();" class="show-8" id="itemresponsivo" href="#"><i class="fa fa-newspaper-o"></i>Texto</a></li>
-			</ul>
-		</div>
-	</div>
 
 
 <div id="adm" class="jumbotron">
-            <div class="container">
+            <div class="container" id="menu">
                 <div class="row">
-                    <a href="./class/logout.php" class="btn btn-warning pull-right"> LOGOUT </a>
-
-                    <div class="col-lg-12">
-                        <div class="col-lg-2">
-
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-								<li>
-                                    <div id="item">
-                                        <a href="#"><i class="fa fa-users fa-2x" onclick="PF('modalAdministrador').show();"></i></a>
-                                    </div>
-								</li>
-								<li>
-                                    <div id="item">
-                                        <a href="#"><i onclick="PF('modalMusica').show();" class="fa fa-music fa-2x"></i></a>
-                                    </div>
-                                 </li>
-								 <li>
-								    <div id="item">
-                                        <a href="#"><i class="fa fa-book fa-2x" onclick="PF('modalAlbum').show();"></i></a>
-                                    </div>
-								</li>
-								<li>
-                                    <div id="item">
-                                        <a href="#"><i class="fa fa-photo fa-2x" onclick="PF('modalFoto').show();"></i></a>
-                                    </div>
-								</li>
-								<li>
-                                   <div id="item">
-                                        <a href="#"><i class="fa fa-youtube-play fa-2x" onclick="PF('modalVideo').show();"></i></a>
-                                    </div>
-								</li>
-								<li>
-                                    <div id="item">
-                                        <a href="#"><i class="fa fa-flag-checkered fa-2x" onclick="PF('modalEvento').show();"></i></a>
-                                    </div>
-								</li>
-								<li>
-                                    <div id="item">
-                                        <a href="#"><i class="fa fa-file-text fa-2x" onclick="PF('modalTexto').show();"></i></a>
-                                    </div>
-								</li>
-								<li>
-									<div id="item">
-										<a href="#"><i class="fa  fa-newspaper-o fa-2x" onclick="PF('modalPost').show();"></i></a>
-									</div>
-								</li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-
-
-                        <div class="col-lg-10">
-                            <div id="pagina">
-                                
-                            </div>
-                        </div>
-
+                    
                     </div>
-
 
 				<p:dialog header="Inserir Administrador" widgetVar="modalAdministrador" modal="true">
 					<h:form>
 						<p:panelGrid columns="2">
 							<p:outputLabel for="nome" value="Nome : " />
-							<p:inputText id="nome" value="#{AdministradorMB.nome}" required="true" requiredMessage="Nome é obrigatório!"/>
+							<p:inputText id="nome" value="#{AdministradorMB.nome}" required="true" requiredMessage="Nome Ã© obrigatÃ³rio!"/>
 							<p:outputLabel for="sobrenome" value="Sobrenome : " />
-							<p:inputText id="sobrenome" value="#{AdministradorMB.sobrenome}" requiredMessage="Sobrenome é obrigatório!" required="true" />
+							<p:inputText id="sobrenome" value="#{AdministradorMB.sobrenome}" requiredMessage="Sobrenome Ã© obrigatÃ³rio!" required="true" />
 							<p:outputLabel for="login" value="Login : " />
-							<p:inputText id="login" value="#{AdministradorMB.login}" requiredMessage="Login é obrigatório!" required="true" />
+							<p:inputText id="login" value="#{AdministradorMB.login}" requiredMessage="Login Ã© obrigatÃ³rio!" required="true" />
 							<p:outputLabel for="senha" value="Senha : " />
-							<p:password id="senha" value="#{AdministradorMB.senha}" requiredMessage="Senha é obrigatório!" required="true" feedback="true" />
+							<p:password id="senha" value="#{AdministradorMB.senha}" requiredMessage="Senha Ã© obrigatÃ³rio!" required="true" feedback="true" />
 							<p:outputLabel for="email" value="Email : " />
-							<p:inputText id="email" value="#{AdministradorMB.email}" requiredMessage="Email é obrigatório!" required="true" />
+							<p:inputText id="email" value="#{AdministradorMB.email}" requiredMessage="Email Ã© obrigatÃ³rio!" required="true" />
 							<p:outputLabel for="telefone" value="Telefone : " />
-							<p:inputMask id="telefone" value="#{AdministradorMB.telefone}" requiredMessage="Telefone é obrigatório!" required="true" mask="(99) 99999-9999" />
+							<p:inputMask id="telefone" value="#{AdministradorMB.telefone}" requiredMessage="Telefone Ã© obrigatÃ³rio!" required="true" mask="(99) 99999-9999" />
 							<h:commandButton value="Salvar" action="#{AdministradorMB.salvar}" />
 							<p:button styleClass="btn btn-info" href="administrador/lista.jsf" value="Listar" icon="fa-list"/>
 						</p:panelGrid>
 					</h:form>
 				</p:dialog>
 
-				<p:dialog header="Inserir Música" widgetVar="modalMusica" modal="true">
+				<p:dialog header="Inserir MÃºsica" widgetVar="modalMusica" modal="true">
 					<h:form>
     					<p:panelGrid columns="2">
 							<p:outputLabel for="nome" value="Nome" />						
-							   <h:inputText required="true" requiredMessage="Nome é obrigatório" value="#{MusicaMB.nome}" id="nome" >
+								<h:inputText required="true" requiredMessage="Nome Ã© obrigatÃ³rio" value="#{MusicaMB.nome}" id="nome" >
 									<f:validateLength minimum="3" />
 								</h:inputText>						
-							<p:outputLabel for="codigo" value="Código" />						
-							   <h:inputText required="true" requiredMessage="Código é obrigatório" value="#{MusicaMB.codigo}" id="codigo" >
+							<p:outputLabel for="codigo" value="CÃ³digo" />						
+							   <h:inputText required="true" requiredMessage="CÃ³digo Ã© obrigatÃ³rio" value="#{MusicaMB.codigo}" id="codigo" >
 									<f:validateLength minimum="3" />
 								</h:inputText>
 							<h:commandButton value="Cadastrar" action="#{MusicaMB.salvar}" />
@@ -167,15 +93,18 @@
 					</h:form>
 				</p:dialog>
 
-				<p:dialog header="Inserir Álbum" widgetVar="modalAlbum" modal="true">
+				<p:dialog header="Inserir Ãlbum" widgetVar="modalAlbum" modal="true" >
 					<h:form>
-						<p:panelGrid columns="2">
+						<p:panelGrid columns="2" >
 							<p:outputLabel for="nome" value="Nome: " />
-							<p:inputText id="nome" value="#{AlbumMB.nome}" required="true" requiredMessage="Nome é obrigatório!" />
-							<p:outputLabel for="descricao" value="Descrição: " />
-							<p:inputText id="descricao" value="#{AlbumMB.descricao}" required="true" requiredMessage="Descrição é obrigatório!"  />
-							<h:commandButton value="Cadastrar" action="#{AlbumMB.salvar}" />
+							<p:inputText id="nome" value="#{AlbumMB.nome}" required="true" requiredMessage="Nome Ã© obrigatÃ³rio!" />
+							
+							<p:outputLabel for="descricao" value="DescriÃ§Ã£o: " />
+							<p:inputText id="descricao" value="#{AlbumMB.descricao}" required="true" requiredMessage="DescriÃ§Ã£o Ã© obrigatÃ³rio!"  />
+							
 							<p:button styleClass="btn btn-info" href="album/lista.jsf" value="Listar" icon="fa-list"/>
+							<h:commandButton value="Cadastrar" action="#{AlbumMB.salvar}" />
+							
 							<h:message></h:message>
 						</p:panelGrid>
 					</h:form>
@@ -185,35 +114,32 @@
 					<h:form id="upload" enctype="multipart/form-data"> 			
 						Escolha o Alb&uacute;m:
 						<br />
-						
-						<p:selectOneMenu value="#{FotoMB.album}" required="true" >
-							<f:selectItem itemLabel="-----Selecione-----" itemValue="" />
-							<f:selectItems value="#{FotoMB.albuns}" />
-						</p:selectOneMenu>
-
+						<h:selectOneMenu id="idAlbum" value="#{FotoMB.idAlbum}" required="true" >
+							<f:selectItem itemLabel="Selecione" itemValue="" />
+							<f:selectItems value="#{FotoMB.albuns}" var="lista" itemLabel="#{lista.nome}" itemValue="#{lista.idDescricao}" />
+							<f:ajax event="change" listener="#{FotoMB.recuperarDados}" execute="@this"/>
+						</h:selectOneMenu>
 						<br />
        					<p:growl id="messages" />
-			            <p:fileUpload multiple="true" fileUploadListener="#{FotoMB.handleFileUpload}" update="messages" auto="true" />
+			            <p:fileUpload fileUploadListener="#{FotoMB.fileUpload}" process="@this @form"  mode="advanced" update="@form" multiple="true" sizeLimit="2097152" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 					</h:form>
 					<h6>Tamanho m&aacute;ximo: 2 MB</h6>
-					
 					<p:button styleClass="btn btn-info" href="foto/lista.jsf" value="Listar" icon="fa-list"/>
-					
 				</p:dialog>
 				
-				<p:dialog header="Inserir Vídeo" widgetVar="modalVideo" modal="true">
+				<p:dialog header="Inserir Video" widgetVar="modalVideo" modal="true">
 					<h:form>
 						<p:panelGrid columns="2">
-							<p:outputLabel for="nome" value="Nome: " />
-							<p:inputText required="true" requiredMessage="Nome é obrigatório" value="#{VideoMB.nome}" id="nome" >
+							<h:outputLabel for="nome" value="Nome: " />
+							<h:inputText required="true" requiredMessage="Nome Ã© obrigatÃ³rio" value="#{VideoMB.nome}" id="nome" >
 								<f:validateLength minimum="3" />
-							</p:inputText>
-							<p:outputLabel for="codigo" value="Link: "/>
-							<p:inputText required="true" requiredMessage="Código do link do youtube é obrigatório" value="#{VideoMB.codigo}" id="codigo" size="30">
+							</h:inputText>
+							<h:outputLabel for="codigo" value="Codigo: "/>
+							<h:inputText required="true" requiredMessage="CÃ³digo do link do youtube Ã© obrigatÃ³rio" value="#{VideoMB.codigo}" id="codigo" size="30">
 								<f:validateLength minimum="3" />
-							</p:inputText>
+							</h:inputText>
 
-							<h6>Tamanho padr&atilde;o: 420 x 660</h6>
+							<h6>Tamanho padr&atilde;o: 420 x 660<br />Inserir link a partir do trecho "watch?v="</h6>
 							<h:commandButton action="#{VideoMB.salvar}" value="cadastrar" />
 							<p:button styleClass="btn btn-info" href="video/lista.jsf" value="Listar" icon="fa-list"/>
 						</p:panelGrid>
@@ -225,22 +151,22 @@
 						<p:panelGrid columns="2">
 
 							<p:outputLabel value="Data: " for="data" />
-							<p:calendar id="data" required="true" requiredMessage="Data é obrigatório!"  value="#{EventoMB.data}" pattern="MM/dd/yyyy HH:mm" widgetVar="dlg" />
+							<p:calendar id="data" required="true" requiredMessage="Data Ã© obrigatÃ³rio!"  value="#{EventoMB.data}" pattern="MM/dd/yyyy HH:mm" widgetVar="dlg" />
 						
-							<p:outputLabel value="Endereço: " for="endereco" />
-							<p:inputText value="#{EventoMB.endereco}" id="endereco" required="true" requiredMessage="Caso não tenha endereço, preencha com --" />
+							<p:outputLabel value="Endereco: " for="endereco" />
+							<p:inputText value="#{EventoMB.endereco}" id="endereco" required="true" requiredMessage="Caso nÃ£o tenha endereÃ§o, preencha com --" />
 							
 							<h:outputText />
 							<input type="button" class="form-control btn-success" value="Procurar no Google Maps" id="maps" />
 							
 							<p:outputLabel value="Local:" for="local" />
-							<p:autoComplete id="local" dropdown="true" required="true" value="#{EventoMB.local}" requiredMessage="Caso não tenha local, preencha com --" completeMethod="#{EventoMB.completeLocais}" />
+							<p:autoComplete id="local" dropdown="true" required="true" value="#{EventoMB.local}" requiredMessage="Caso nÃ£o tenha local, preencha com --" completeMethod="#{EventoMB.completeLocais}" />
 							
 							<p:outputLabel value="Nome: " for="nome" />
-							<p:inputText value="#{EventoMB.nome}" id="nome" required="true" requiredMessage="Nome é obrigatório!" />
+							<p:inputText value="#{EventoMB.nome}" id="nome" required="true" requiredMessage="Nome Ã© obrigatÃ³rio!" />
 							
 							<p:outputLabel value="Obs: " for="obs" />
-							<p:inputText value="#{EventoMB.obs}" id="obs" required="true" requiredMessage="Valor da entrada, Entrada Gratuíta ou 1 KG de Alimento não perecível?"/>
+							<p:inputText value="#{EventoMB.obs}" id="obs" required="true" requiredMessage="Valor da entrada, Entrada GratuÃ­ta ou 1 KG de Alimento nÃ£o perecÃ­vel?"/>
 
 						</p:panelGrid>
 						<br />
@@ -276,11 +202,11 @@
 							<div class="col-md-12"><h:outputText value="#{Post.conteudo}"/></div>
 							<br />
 							<div class="col-md-12">
-								<h:commandButton action="#{PostMB.aprovar}" styleClass="btn btn-success" value="Aprovar" onclick="if(confirm('Tem certeza dessa ação?')){ return true }else{ return false};">
+								<h:commandButton action="#{PostMB.aprovar}" styleClass="btn btn-success" value="Aprovar" onclick="if(confirm('Tem certeza dessa aÃ§Ã£o?')){ return true }else{ return false};">
 									<f:param name="id" value="#{Post.id}" />
 								</h:commandButton>
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								<h:commandButton action="#{PostMB.recusar}" styleClass="btn btn-danger" value="Recusar" onclick="if(confirm('Tem certeza dessa ação?')){ return true }else{ return false};">
+								<h:commandButton action="#{PostMB.recusar}" styleClass="btn btn-danger" value="Recusar" onclick="if(confirm('Tem certeza dessa aÃ§Ã£o?')){ return true }else{ return false};">
 									<f:param name="id" value="#{Post.id}" />
 								</h:commandButton>
 							</div>														
@@ -293,7 +219,49 @@
         
 			</div>
             </div>
-        </div>
 
-</h:body>
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+      <div class="templatemo-sidebar">
+        <header class="templatemo-site-header">
+          <h1> <i class="fa fa-gear" /> Painel Administrativo</h1>
+        </header>
+        <!-- Search box -->
+<!--         <form class="templatemo-search-form" role="search"> -->
+<!--           <div class="input-group"> -->
+<!--               <button type="submit" class="fa fa-search"></button> -->
+<!--               <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" />            -->
+<!--           </div> -->
+<!--         </form> -->
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">          
+          <ul>
+            <li><a onclick="PF('modalAdministrador').show();" class="show-1" href="#"><i class="fa fa-users"></i> Administrador</a></li>
+			<li><a onclick="PF('modalMusica').show();" class="show-2" href="#"><i class="fa fa-music"></i>M&uacute;sica</a></li>
+			<li><a onclick="PF('modalAlbum').show();" class="show-3" href="#"><i class="fa fa-book"></i> Album</a></li>
+			<li><a onclick="PF('modalFoto').show();" class="show-4" href="#"><i class="fa fa-photo"></i> Foto</a></li>
+			<li><a onclick="PF('modalVideo').show();" class="show-5" href="#"><i class="fa fa-youtube-play"></i>V&iacute;deo</a></li>
+			<li><a onclick="PF('modalEvento').show();" class="show-6" href="#"><i class="fa fa-flag-checkered"></i>Evento</a></li>
+			<li><a onclick="PF('modalTexto').show();" class="show-7" href="#"><i class="fa fa-file-text-o"></i>Texto</a></li>
+			<li><a onclick="PF('modalPost').show();" class="show-8" href="#"><i class="fa fa-newspaper-o"></i>Posts</a></li>
+          </ul>  
+        </nav>
+      </div>
+
+      
+      <div class="templatemo-content col-1 light-gray-bg">
+          <footer class="text-right">
+            <p>Copyright &copy; 2015 Gerenciamento de ConteÃºdo - 
+            Design por <a href="#">Renato Lima - Rafael Barros</a></p>
+          </footer>         
+        </div>
+      </div>
+    
+    <script>
+      
+    </script>
+
+  </h:body>
 </html>

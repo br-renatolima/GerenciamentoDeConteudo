@@ -14,6 +14,7 @@ public class AdministradorDAO {
 		this.session = HibernateUtil.getSession();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Administrador> listarTodos() {
 		return session.createCriteria(Administrador.class).addOrder(Order.asc("id")).list();
 	}

@@ -1,7 +1,9 @@
 package dao;
 
 import java.util.List;
+
 import modelo.Musica;
+
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 
@@ -12,6 +14,7 @@ public class MusicaDAO {
 		this.session = HibernateUtil.getSession();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Musica> ListarTodas() {
 		return session.createCriteria(Musica.class).addOrder(Order.desc("id")).list();
 	}

@@ -51,12 +51,14 @@ public class MusicaMB {
 		return null;
 	}
 	
-	public void atualizar(){
+	public String atualizar(){
 		this.dao.atualizar(musica);
+		return null;
 	}
 	
-	public void remover(){
+	public String remover(){
 		dao.remover(musica);
+		return null;
 	}
 	
 	
@@ -85,11 +87,12 @@ public class MusicaMB {
 		this.nome = nome;
 	}
 	
-	public void salvar(){
+	public String salvar(){
 		Musica m = new Musica();
 		m.setCodigo(this.codigo);
 		m.setNome(this.nome);
 		dao.inserir(m);
+		return null;
 	}	
 
 	public Musica getMusica() {
